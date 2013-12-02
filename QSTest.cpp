@@ -33,7 +33,7 @@ bool QSTest::testSortAll(QSInterface* test)
 	int testArray1Result[6] = { 0, 2, 4, 5, 7, 7 };
 
 	print(TestBit, testArray1, ARRAY_SIZE(testArray1)); // print out before test
-	test->sortAll(testArray1, 6);  // sort using test's sort all 
+	test->sortAll(testArray1, 6);  // sort using test's sort all
 	print(TestBit, testArray1, ARRAY_SIZE(testArray1)); // print out after test
 
 	for (int x = 0; x < ARRAY_SIZE(testArray1); x++)  // check if expected result return false if not what expected
@@ -93,7 +93,7 @@ bool QSTest::testSort(QSInterface* test)
 	int testArray1Result[6] = { 0, 2, 4, 5, 7, 7 };
 
 	print(TestBit, testArray1, ARRAY_SIZE(testArray1)); // print out before test
-	test->sort(testArray1,6,0,5);  // sort using test's sort all 
+	test->sort(testArray1,6,0,5);  // sort using test's sort all
 	print(TestBit, testArray1, ARRAY_SIZE(testArray1)); // print out after test
 
 	for (int x = 0; x < ARRAY_SIZE(testArray1); x++)  // check if expected result return false if not what expected
@@ -194,21 +194,16 @@ bool QSTest::testSort(QSInterface* test)
 	int testArray9Result[6] = { 4, 2, 5, 7, 0, 7 }; // 1 through 3 are sorted
 
 	print(TestBit, testArray9, ARRAY_SIZE(testArray9)); // print out before test
-	test->sort(testArray9, 6, 1, 3);  // sort using test's sort all 
+	test->sort(testArray9, 6, 1, 3);  // sort using test's sort all
 	print(TestBit, testArray9, ARRAY_SIZE(testArray9)); // print out after test
 
-	if (testArray9[1] != testArray1Result[1]) // check if expected result return false if not what expected
+	for (int x = 0; x < ARRAY_SIZE(testArray9); x++)  // check if expected result return false if not what expected
 	{
-		return false;
+		if (testArray9[x] != testArray9Result[x])
+		{
+			return false;
+		}
 	}
-	if (testArray9[2] != testArray1Result[2]) // check if expected result return false if not what expected
-	{
-		return false;
-	}
-	if (testArray9[3] != testArray1Result[3]) // check if expected result return false if not what expected
-	{
-		return false;
-	} 
 	if (TestBit)
 	{
 		cout << "sort Passed TEST 6 of 6 - sort portion 1:3" << endl;
@@ -244,7 +239,7 @@ bool QSTest::testMedianOfThree(QSInterface* test)
 	int testArray1Result[6] = { 2, 7, 4, 5, 0, 7 };
 
 	print(TestBit, testArray1, ARRAY_SIZE(testArray1)); // print out before test
-	test->medianOfThree(testArray1, 6, 0, 5);  // sort using test's sort all 
+	test->medianOfThree(testArray1, 6, 0, 5);  // sort using test's sort all
 	print(TestBit, testArray1, ARRAY_SIZE(testArray1)); // print out after test
 
 	for (int x = 0; x < ARRAY_SIZE(testArray1); x++)  // check if expected result return false if not what expected
@@ -264,7 +259,7 @@ bool QSTest::testMedianOfThree(QSInterface* test)
 	int testArrayResult[6] = { 0, 7, 2, 5, 4, 7 };
 
 	print(TestBit, testArray, ARRAY_SIZE(testArray)); // print out before test
-	test->medianOfThree(testArray, 5, 0, 4);  // sort using test's sort all 
+	test->medianOfThree(testArray, 5, 0, 4);  // sort using test's sort all
 	print(TestBit, testArray, ARRAY_SIZE(testArray)); // print out after test
 
 	for (int x = 0; x < ARRAY_SIZE(testArray); x++)  // check if expected result return false if not what expected
@@ -377,17 +372,21 @@ bool QSTest::testPartition(QSInterface* test)
 
 	// TEST 1 - Median of Three, even number of objects in array
 	int testArray1[6] = { 4, 7, 2, 5, 0, 7 };
-
-	print(TestBit, testArray1, ARRAY_SIZE(testArray1)); // print out before test
-	int TestInt0 = test->partition(testArray1, 6, 0, 5);  // sort using test's sort all 
-	print(TestBit, testArray1, ARRAY_SIZE(testArray1)); // print out after test
 	int PartitionLocation1 = (0 + 5) / 2;
+	int partitionVal = testArray1[PartitionLocation1];
+	print(TestBit, testArray1, ARRAY_SIZE(testArray1)); // print out before test
+	int TestInt0 = test->partition(testArray1, 6, 0, 5);  // sort using test's sort all
+	print(TestBit, testArray1, ARRAY_SIZE(testArray1)); // print out after test
 	for (int x = 0; x < PartitionLocation1; x++)  // check if expected result return false if not what expected
 	{
 		if (!(testArray1[x] <= testArray1[PartitionLocation1])) // all numbers located to the left of the partition should be less than or equal to it
 		{
 			return false;
 		}
+	}
+	if(testArray1[PartitionLocation1] != partitionVal)
+	{
+	    return false;
 	}
 
 	for (int x = ( ARRAY_SIZE(testArray1) -1); x > PartitionLocation1; x--)  // check if expected result return false if not what expected
@@ -408,12 +407,12 @@ bool QSTest::testPartition(QSInterface* test)
 	}
 
 	// TEST 2 - Median of Three, odd number of objects in array
-	int testArray[9] = { 4, 7, 0, 5, 2, 7, 47, 98, -13 };
-
+	int testArray[7] = { 0, 5, 2, 7, 47, 98, -13 };
+	int PartitionLocation2 = (0 + 6) / 2;
+    int partitionVal1 = testArray[PartitionLocation2];
 	print(TestBit, testArray, ARRAY_SIZE(testArray)); // print out before test
-	int TestInt01 = test->partition(testArray, 9, 0, 8);  // sort using test's sort all 
+	int TestInt01 = test->partition(testArray, 7, 0, 6);  // sort using test's sort all
 	print(TestBit, testArray, ARRAY_SIZE(testArray)); // print out after test
-	int PartitionLocation2 = (0 + 8) / 2;
 	for (int x = 0; x < PartitionLocation2; x++)  // check if expected result return false if not what expected
 	{
 		if (!(testArray[x] <= testArray[PartitionLocation2])) // all numbers located to the left of the partition should be less than or equal to it
@@ -428,6 +427,10 @@ bool QSTest::testPartition(QSInterface* test)
 		{
 			return false;
 		}
+	}
+	if(testArray[PartitionLocation2] != partitionVal1)
+	{
+	    return false;
 	}
 
 	if (TestInt01 == -1) // should not return -1 if it does return false
@@ -560,7 +563,7 @@ bool QSTest::testSwap(QSInterface* test)
 	int testArray1Result[6] = { 4, 0, 2, 5, 7, 7 };
 
 	print(TestBit, testArray1, ARRAY_SIZE(testArray1)); // print out before test
-	test->swap(testArray1, 6,1,4);  // sort using test's sort all 
+	test->swap(testArray1, 6,1,4);  // sort using test's sort all
 	print(TestBit, testArray1, ARRAY_SIZE(testArray1)); // print out after test
 
 	if (testArray1[1] != testArray1Result[1])
@@ -664,4 +667,5 @@ void QSTest::print(bool TestBit, int array[], int size)
 				}
 			}
 		}
+	}
 }
