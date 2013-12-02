@@ -69,7 +69,7 @@ public:
 	*/
 	virtual bool testSwap(QSInterface* test);
 
-	void print(bool TestBit, int array[]);
+	void print(bool TestBit, int array[], int size);
 protected:
 	bool TestBit;
 };

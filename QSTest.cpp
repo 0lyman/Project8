@@ -32,9 +32,9 @@ bool QSTest::testSortAll(QSInterface* test)
 	int testArray1[6] = { 4, 7, 2, 5, 0, 7 };
 	int testArray1Result[6] = { 0, 2, 4, 5, 7, 7 };
 
-	print(TestBit, testArray1); // print out before test
+	print(TestBit, testArray1, ARRAY_SIZE(testArray1)); // print out before test
 	test->sortAll(testArray1, 6);  // sort using test's sort all 
-	print(TestBit, testArray1); // print out after test
+	print(TestBit, testArray1, ARRAY_SIZE(testArray1)); // print out after test
 
 	for (int x = 0; x < ARRAY_SIZE(testArray1); x++)  // check if expected result return false if not what expected
 	{
@@ -53,9 +53,9 @@ bool QSTest::testSortAll(QSInterface* test)
 	int testArray2[6] = { 4, 7, 2, 5, 0, 7 };
 	int testArray2Result[6] = { 4, 7, 2, 5, 0, 7 }; // should remain the same if sortall is told size is zero
 
-	print(TestBit, testArray2);
+	print(TestBit, testArray2, ARRAY_SIZE(testArray2));
 	test->sortAll(testArray2, 0);
-	print(TestBit, testArray2);
+	print(TestBit, testArray2, ARRAY_SIZE(testArray2));
 
 	for (int x = 0; x < ARRAY_SIZE(testArray2); x++)  // check if expected result return false if not what expected
 	{
@@ -92,9 +92,9 @@ bool QSTest::testSort(QSInterface* test)
 	int testArray1[6] = { 4, 7, 2, 5, 0, 7 };
 	int testArray1Result[6] = { 0, 2, 4, 5, 7, 7 };
 
-	print(TestBit, testArray1); // print out before test
+	print(TestBit, testArray1, ARRAY_SIZE(testArray1)); // print out before test
 	test->sort(testArray1,6,0,5);  // sort using test's sort all 
-	print(TestBit, testArray1); // print out after test
+	print(TestBit, testArray1, ARRAY_SIZE(testArray1)); // print out after test
 
 	for (int x = 0; x < ARRAY_SIZE(testArray1); x++)  // check if expected result return false if not what expected
 	{
@@ -113,9 +113,9 @@ bool QSTest::testSort(QSInterface* test)
 	int testArray2[6] = { 4, 7, 2, 5, 0, 7 };
 	int testArray2Result[6] = { 4, 7, 2, 5, 0, 7 }; // should remain the same if sortall is told size is zero
 
-	print(TestBit, testArray2);
-	test->sort(testArray1, 0, 0, 5); // given size zero
-	print(TestBit, testArray2);
+	print(TestBit, testArray2, ARRAY_SIZE(testArray2));
+	test->sort(testArray2, 0, 0, 5); // given size zero
+	print(TestBit, testArray2, ARRAY_SIZE(testArray2));
 
 	for (int x = 0; x < ARRAY_SIZE(testArray2); x++)  // check if expected result return false if not what expected
 	{
@@ -133,9 +133,9 @@ bool QSTest::testSort(QSInterface* test)
 	int testArray3[6] = { 4, 7, 2, 5, 0, 7 };
 	int testArray3Result[6] = { 4, 7, 2, 5, 0, 7 }; // should remain the same if sortall is told bad boundries
 
-	print(TestBit, testArray3);
-	test->sort(testArray1, 6, 4, 1);
-	print(TestBit, testArray3);
+	print(TestBit, testArray3, ARRAY_SIZE(testArray3));
+	test->sort(testArray3, 6, 4, 1);
+	print(TestBit, testArray3, ARRAY_SIZE(testArray3));
 
 	for (int x = 0; x < ARRAY_SIZE(testArray3); x++)  // check if expected result return false if not what expected
 	{
@@ -153,9 +153,9 @@ bool QSTest::testSort(QSInterface* test)
 	int testArray4[6] = { 4, 7, 2, 5, 0, 7 };
 	int testArray4Result[6] = { 4, 7, 2, 5, 0, 7 }; // should remain the same if sortall is told bad boundries
 
-	print(TestBit, testArray4);
-	test->sort(testArray1, 6, -2, 5);
-	print(TestBit, testArray4);
+	print(TestBit, testArray4, ARRAY_SIZE(testArray4));
+	test->sort(testArray4, 6, -2, 5);
+	print(TestBit, testArray4, ARRAY_SIZE(testArray4));
 
 	for (int x = 0; x < ARRAY_SIZE(testArray4); x++)  // check if expected result return false if not what expected
 	{
@@ -173,9 +173,9 @@ bool QSTest::testSort(QSInterface* test)
 	int testArray5[6] = { 4, 7, 2, 5, 0, 7 };
 	int testArray5Result[6] = { 4, 7, 2, 5, 0, 7 }; // should remain the same if sortall is told bad boundries
 
-	print(TestBit, testArray5);
-	test->sort(testArray1, 6, 2, 7);
-	print(TestBit, testArray5);
+	print(TestBit, testArray5, ARRAY_SIZE(testArray5));
+	test->sort(testArray5, 6, 2, 7);
+	print(TestBit, testArray5, ARRAY_SIZE(testArray5));
 
 	for (int x = 0; x < ARRAY_SIZE(testArray5); x++)  // check if expected result return false if not what expected
 	{
@@ -190,22 +190,22 @@ bool QSTest::testSort(QSInterface* test)
 	}
 
 	// TEST 6 - sort portion 1:3
-	int testArray1[6] = { 4, 7, 2, 5, 0, 7 };
-	int testArray1Result[6] = { 4, 2, 5, 7, 0, 7 }; // 1 through 3 are sorted
+	int testArray9[6] = { 4, 7, 2, 5, 0, 7 };
+	int testArray9Result[6] = { 4, 2, 5, 7, 0, 7 }; // 1 through 3 are sorted
 
-	print(TestBit, testArray1); // print out before test
-	test->sort(testArray1, 6, 1, 3);  // sort using test's sort all 
-	print(TestBit, testArray1); // print out after test
+	print(TestBit, testArray9, ARRAY_SIZE(testArray9)); // print out before test
+	test->sort(testArray9, 6, 1, 3);  // sort using test's sort all 
+	print(TestBit, testArray9, ARRAY_SIZE(testArray9)); // print out after test
 
-	if (testArray1[1] != testArray1Result[1]) // check if expected result return false if not what expected
+	if (testArray9[1] != testArray1Result[1]) // check if expected result return false if not what expected
 	{
 		return false;
 	}
-	if (testArray1[2] != testArray1Result[2]) // check if expected result return false if not what expected
+	if (testArray9[2] != testArray1Result[2]) // check if expected result return false if not what expected
 	{
 		return false;
 	}
-	if (testArray1[3] != testArray1Result[3]) // check if expected result return false if not what expected
+	if (testArray9[3] != testArray1Result[3]) // check if expected result return false if not what expected
 	{
 		return false;
 	} 
@@ -243,9 +243,9 @@ bool QSTest::testMedianOfThree(QSInterface* test)
 	int testArray1[6] = { 4, 7, 2, 5, 0, 7 };
 	int testArray1Result[6] = { 2, 7, 4, 5, 0, 7 };
 
-	print(TestBit, testArray1); // print out before test
+	print(TestBit, testArray1, ARRAY_SIZE(testArray1)); // print out before test
 	test->medianOfThree(testArray1, 6, 0, 5);  // sort using test's sort all 
-	print(TestBit, testArray1); // print out after test
+	print(TestBit, testArray1, ARRAY_SIZE(testArray1)); // print out after test
 
 	for (int x = 0; x < ARRAY_SIZE(testArray1); x++)  // check if expected result return false if not what expected
 	{
@@ -263,9 +263,9 @@ bool QSTest::testMedianOfThree(QSInterface* test)
 	int testArray[6] = { 4, 7, 0, 5, 2, 7 };
 	int testArrayResult[6] = { 0, 7, 2, 5, 4, 7 };
 
-	print(TestBit, testArray); // print out before test
+	print(TestBit, testArray, ARRAY_SIZE(testArray)); // print out before test
 	test->medianOfThree(testArray, 5, 0, 4);  // sort using test's sort all 
-	print(TestBit, testArray); // print out after test
+	print(TestBit, testArray, ARRAY_SIZE(testArray)); // print out after test
 
 	for (int x = 0; x < ARRAY_SIZE(testArray); x++)  // check if expected result return false if not what expected
 	{
@@ -283,9 +283,9 @@ bool QSTest::testMedianOfThree(QSInterface* test)
 	int testArray2[6] = { 4, 7, 2, 5, 0, 7 };
 	int testArray2Result[6] = { 4, 7, 2, 5, 0, 7 }; // should remain the same if sortall is told size is zero
 
-	print(TestBit, testArray2);
-	test->medianOfThree(testArray1, 0, 0, 5); // given size zero
-	print(TestBit, testArray2);
+	print(TestBit, testArray2, ARRAY_SIZE(testArray2));
+	test->medianOfThree(testArray2, 0, 0, 5); // given size zero
+	print(TestBit, testArray2, ARRAY_SIZE(testArray2));
 
 	for (int x = 0; x < ARRAY_SIZE(testArray2); x++)  // check if expected result return false if not what expected
 	{
@@ -303,9 +303,9 @@ bool QSTest::testMedianOfThree(QSInterface* test)
 	int testArray3[6] = { 4, 7, 2, 5, 0, 7 };
 	int testArray3Result[6] = { 4, 7, 2, 5, 0, 7 }; // should remain the same if sortall is told bad boundries
 
-	print(TestBit, testArray3);
-	test->medianOfThree(testArray1, 6, 5, 0);
-	print(TestBit, testArray3);
+	print(TestBit, testArray3, ARRAY_SIZE(testArray3));
+	test->medianOfThree(testArray3, 6, 5, 0);
+	print(TestBit, testArray3, ARRAY_SIZE(testArray3));
 
 	for (int x = 0; x < ARRAY_SIZE(testArray3); x++)  // check if expected result return false if not what expected
 	{
@@ -323,9 +323,9 @@ bool QSTest::testMedianOfThree(QSInterface* test)
 	int testArray4[6] = { 4, 7, 2, 5, 0, 7 };
 	int testArray4Result[6] = { 4, 7, 2, 5, 0, 7 }; // should remain the same if sortall is told bad boundries
 
-	print(TestBit, testArray4);
-	test->medianOfThree(testArray1, 6, -2, 3);
-	print(TestBit, testArray4);
+	print(TestBit, testArray4, ARRAY_SIZE(testArray4));
+	test->medianOfThree(testArray4, 6, -2, 3);
+	print(TestBit, testArray4, ARRAY_SIZE(testArray4));
 
 	for (int x = 0; x < ARRAY_SIZE(testArray4); x++)  // check if expected result return false if not what expected
 	{
@@ -343,9 +343,9 @@ bool QSTest::testMedianOfThree(QSInterface* test)
 	int testArray5[6] = { 4, 7, 2, 5, 0, 7 };
 	int testArray5Result[6] = { 4, 7, 2, 5, 0, 7 }; // should remain the same if sortall is told bad boundries
 
-	print(TestBit, testArray5);
-	test->medianOfThree(testArray1, 6, 2, 7);
-	print(TestBit, testArray5);
+	print(TestBit, testArray5, ARRAY_SIZE(testArray5));
+	test->medianOfThree(testArray5, 6, 2, 7);
+	print(TestBit, testArray5, ARRAY_SIZE(testArray5));
 
 	for (int x = 0; x < ARRAY_SIZE(testArray5); x++)  // check if expected result return false if not what expected
 	{
@@ -378,9 +378,9 @@ bool QSTest::testPartition(QSInterface* test)
 	// TEST 1 - Median of Three, even number of objects in array
 	int testArray1[6] = { 4, 7, 2, 5, 0, 7 };
 
-	print(TestBit, testArray1); // print out before test
+	print(TestBit, testArray1, ARRAY_SIZE(testArray1)); // print out before test
 	int TestInt0 = test->partition(testArray1, 6, 0, 5);  // sort using test's sort all 
-	print(TestBit, testArray1); // print out after test
+	print(TestBit, testArray1, ARRAY_SIZE(testArray1)); // print out after test
 	int PartitionLocation1 = (0 + 5) / 2;
 	for (int x = 0; x < PartitionLocation1; x++)  // check if expected result return false if not what expected
 	{
@@ -410,9 +410,9 @@ bool QSTest::testPartition(QSInterface* test)
 	// TEST 2 - Median of Three, odd number of objects in array
 	int testArray[9] = { 4, 7, 0, 5, 2, 7, 47, 98, -13 };
 
-	print(TestBit, testArray); // print out before test
+	print(TestBit, testArray, ARRAY_SIZE(testArray)); // print out before test
 	int TestInt01 = test->partition(testArray, 9, 0, 8);  // sort using test's sort all 
-	print(TestBit, testArray); // print out after test
+	print(TestBit, testArray, ARRAY_SIZE(testArray)); // print out after test
 	int PartitionLocation2 = (0 + 8) / 2;
 	for (int x = 0; x < PartitionLocation2; x++)  // check if expected result return false if not what expected
 	{
@@ -443,9 +443,9 @@ bool QSTest::testPartition(QSInterface* test)
 	int testArray2[6] = { 4, 7, 2, 5, 0, 7 };
 	int testArray2Result[6] = { 4, 7, 2, 5, 0, 7 }; // should remain the same if sortall is told size is zero
 
-	print(TestBit, testArray2);
-	int testInt2 = test->partition(testArray1, 0, 0, 5); // given size zero
-	print(TestBit, testArray2);
+	print(TestBit, testArray2, ARRAY_SIZE(testArray2));
+	int testInt2 = test->partition(testArray2, 0, 0, 5); // given size zero
+	print(TestBit, testArray2, ARRAY_SIZE(testArray2));
 
 	for (int x = 0; x < ARRAY_SIZE(testArray2); x++)  // check if expected result return false if not what expected
 	{
@@ -468,9 +468,9 @@ bool QSTest::testPartition(QSInterface* test)
 	int testArray3[6] = { 4, 7, 2, 5, 0, 7 };
 	int testArray3Result[6] = { 4, 7, 2, 5, 0, 7 }; // should remain the same if sortall is told bad boundries
 
-	print(TestBit, testArray3);
-	int testInt3 = test->partition(testArray1, 6, 5, 0);
-	print(TestBit, testArray3);
+	print(TestBit, testArray3, ARRAY_SIZE(testArray3));
+	int testInt3 = test->partition(testArray3, 6, 5, 0);
+	print(TestBit, testArray3, ARRAY_SIZE(testArray3));
 
 	for (int x = 0; x < ARRAY_SIZE(testArray3); x++)  // check if expected result return false if not what expected
 	{
@@ -493,9 +493,9 @@ bool QSTest::testPartition(QSInterface* test)
 	int testArray4[6] = { 4, 7, 2, 5, 0, 7 };
 	int testArray4Result[6] = { 4, 7, 2, 5, 0, 7 }; // should remain the same if sortall is told bad boundries
 
-	print(TestBit, testArray4);
-	int testInt4 = test->partition(testArray1, 6, -2, 3);
-	print(TestBit, testArray4);
+	print(TestBit, testArray4, ARRAY_SIZE(testArray4));
+	int testInt4 = test->partition(testArray4, 6, -2, 3);
+	print(TestBit, testArray4,ARRAY_SIZE(testArray4));
 
 	for (int x = 0; x < ARRAY_SIZE(testArray4); x++)  // check if expected result return false if not what expected
 	{
@@ -518,9 +518,9 @@ bool QSTest::testPartition(QSInterface* test)
 	int testArray5[6] = { 4, 7, 2, 5, 0, 7 };
 	int testArray5Result[6] = { 4, 7, 2, 5, 0, 7 }; // should remain the same if sortall is told bad boundries
 
-	print(TestBit, testArray5);
-	int testInt5 = test->partition(testArray1, 6, 2, 7);
-	print(TestBit, testArray5);
+	print(TestBit, testArray5, ARRAY_SIZE(testArray5));
+	int testInt5 = test->partition(testArray5, 6, 2, 7);
+	print(TestBit, testArray5, ARRAY_SIZE(testArray5));
 
 	for (int x = 0; x < ARRAY_SIZE(testArray5); x++)  // check if expected result return false if not what expected
 	{
@@ -559,9 +559,9 @@ bool QSTest::testSwap(QSInterface* test)
 	int testArray1[6] = { 4, 7, 2, 5, 0, 7 };
 	int testArray1Result[6] = { 4, 0, 2, 5, 7, 7 };
 
-	print(TestBit, testArray1); // print out before test
+	print(TestBit, testArray1, ARRAY_SIZE(testArray1)); // print out before test
 	test->swap(testArray1, 6,1,4);  // sort using test's sort all 
-	print(TestBit, testArray1); // print out after test
+	print(TestBit, testArray1, ARRAY_SIZE(testArray1)); // print out after test
 
 	if (testArray1[1] != testArray1Result[1])
 	{
@@ -581,9 +581,9 @@ bool QSTest::testSwap(QSInterface* test)
 	int testArray2[6] = { 4, 7, 2, 5, 0, 7 };
 	int testArray2Result[6] = { 4, 7, 2, 5, 0, 7 }; // should remain the same if sortall is told size is zero
 
-	print(TestBit, testArray2);
+	print(TestBit, testArray2, ARRAY_SIZE(testArray2));
 	test->swap(testArray2, 0, 3, 5);
-	print(TestBit, testArray2);
+	print(TestBit, testArray2, ARRAY_SIZE(testArray2));
 
 	for (int x = 0; x < ARRAY_SIZE(testArray2); x++)  // check if expected result return false if not what expected
 	{
@@ -601,9 +601,9 @@ bool QSTest::testSwap(QSInterface* test)
 	int testArray4[6] = { 4, 7, 2, 5, 0, 7 };
 	int testArray4Result[6] = { 4, 7, 2, 5, 0, 7 }; // should remain the same if sortall is told bad boundries
 
-	print(TestBit, testArray4);
-	test->swap(testArray1, 6, -3, 4);
-	print(TestBit, testArray4);
+	print(TestBit, testArray4, ARRAY_SIZE(testArray4));
+	test->swap(testArray4, 6, -3, 4);
+	print(TestBit, testArray4, ARRAY_SIZE(testArray4));
 
 	for (int x = 0; x < ARRAY_SIZE(testArray4); x++)  // check if expected result return false if not what expected
 	{
@@ -621,9 +621,9 @@ bool QSTest::testSwap(QSInterface* test)
 	int testArray5[6] = { 4, 7, 2, 5, 0, 7 };
 	int testArray5Result[6] = { 4, 7, 2, 5, 0, 7 }; // should remain the same if sortall is told bad boundries
 
-	print(TestBit, testArray5);
-	test->swap(testArray1, 6, 2, 7);
-	print(TestBit, testArray5);
+	print(TestBit, testArray5, ARRAY_SIZE(testArray5));
+	test->swap(testArray5, 6, 2, 7);
+	print(TestBit, testArray5, ARRAY_SIZE(testArray5));
 
 	for (int x = 0; x < ARRAY_SIZE(testArray5); x++)  // check if expected result return false if not what expected
 	{
@@ -642,11 +642,11 @@ bool QSTest::testSwap(QSInterface* test)
 
 }
 
-void QSTest::print(bool TestBit, int array[])
+void QSTest::print(bool TestBit, int array[], int size)
 {
 	if (TestBit)
 	{
-		for (int x = 0; x < ARRAY_SIZE(array); x++)
+		for (int x = 0; x < size; x++)
 		{
 			if (x == 0)
 			{
@@ -654,7 +654,7 @@ void QSTest::print(bool TestBit, int array[])
 			}
 			else
 			{
-				if (x == (ARRAY_SIZE(array) - 1))
+				if (x == (size - 1))
 				{
 					cout << ", " << array[x] << endl;
 				}
